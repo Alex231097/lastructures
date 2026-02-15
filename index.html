@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -29,7 +31,72 @@
 
 <!-- Каноничный URL -->
 <link rel="canonical" href="https://lastructures.ru">
-    
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Сколько стоит разработка КМД за тонну?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "От 1 000 до 5 000 руб/тонна — зависит от объёма и сложности конструкций. Чем больше тоннаж, тем ниже стоимость за тонну."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Какие сроки разработки КМД?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Индивидуально. 100 тонн — 2–3 недели. Объекты 100–300 тонн — 3–5 недель. Возможна поэтапная выдача."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Что нужно для начала работы?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Комплект чертежей стадии КМ в PDF или DWG. Если КМ неполный или требует доработки — можем взять в работу."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "В какой программе работаете?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tekla Structures."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Что входит в комплект документации КМД?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Деталировочные чертежи, монтажные схемы, ведомость отправочных марок, спецификация метизов, ведомость покраски, NC/DXF файлы для ЧПУ."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Работаете удалённо?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Да, работаем с заказчиками по всей России, подстроимся под ваш часовой пояс.""
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Как происходит оплата?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Работаем по договору. Предоплата 30–50%, гибкие условия.
+      }
+    }
+  ]
+}
+</script>
+
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -1371,6 +1438,84 @@
             .hero-buttons { flex-direction: column; }
             .hero-buttons a, .hero-buttons button { width: 100%; justify-content: center; }
         }
+
+
+        /* ═══════════════════════════════════════
+        FAQ ACCORDION
+        ═══════════════════════════════════════ */
+        .faq-list {
+            max-width: 800px;
+            margin-top: 60px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .faq-item:first-child {
+            border-top: 1px solid var(--border);
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            background: none;
+            border: none;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            transition: color 0.3s;
+            gap: 20px;
+        }
+
+        .faq-question:hover {
+            color: var(--gold);
+        }
+
+        .faq-icon {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 20px;
+            font-weight: 300;
+            color: var(--gold);
+            flex-shrink: 0;
+            transition: transform 0.3s;
+            width: 24px;
+            text-align: center;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 0 0;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+            padding: 0 0 24px 0;
+        }
+
+        .faq-answer p {
+            font-size: 14px;
+            color: var(--text-dim);
+            line-height: 1.8;
+            padding-left: 0;
+            border-left: 2px solid var(--gold-dim);
+            padding-left: 20px;
+        }
+
+        
     </style>
 </head>
 <body>
@@ -1391,6 +1536,7 @@
             <li><a href="#process">Как работаем</a></li>
             <li><a href="#calc">Калькулятор</a></li>
             <li><a href="#contact">Контакты</a></li>
+            <li><a href="#faq">FAQ</a></li>
         </ul>
 
         <a href="https://t.me/LAStructures" target="_blank" class="nav-tg">✈ Telegram</a>
@@ -1410,6 +1556,7 @@
     <a href="#calc" onclick="this.parentElement.classList.remove('open')">Калькулятор</a>
     <a href="#contact" onclick="this.parentElement.classList.remove('open')">Контакты</a>
     <a href="https://t.me/LAStructures" target="_blank" style="color: var(--gold);">Написать в Telegram</a>
+    <a href="#faq" onclick="this.parentElement.classList.remove('open')">FAQ</a>
 </div>
 
 <!-- ═══════════════════════════════════════
@@ -2175,44 +2322,121 @@
     </div>
 </div>
 <!-- ═══════════════════════════════════════
+     FAQ
+     ═══════════════════════════════════════ -->
+<section id="faq">
+    <div class="container">
+        <div class="section-label reveal">Вопросы</div>
+        <h2 class="section-title reveal">Частые вопросы</h2>
+
+        <div class="faq-list reveal">
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Сколько стоит разработка КМД за тонну?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>От 1 000 до 5 000 ₽/тонна — зависит от объёма 
+                    и сложности конструкций. Чем больше тоннаж, тем ниже 
+                    стоимость за тонну. Рассчитайте ориентировочную стоимость 
+                    в <a href="#calc" style="color: var(--gold);">калькуляторе</a> 
+                    или напишите — оценю ваш проект бесплатно за 1 день.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Какие сроки разработки КМД?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Типовой объект до 100 тонн — 2–3 недели. 
+                    Объекты 100–300 тонн — 3–5 недель. 
+                    Возможна поэтапная выдача, если нужно начать 
+                    производство до завершения всего комплекта. 
+                    Точные сроки — после изучения КМ.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Что нужно для начала работы?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Комплект чертежей стадии КМ в PDF или DWG. 
+                    Если КМ неполный или требует доработки — возьмём 
+                    в работу, но стоимость будет выше. Присылайте что есть — 
+                    разберёмся и скажем, достаточно ли исходных данных.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>В какой программе работаете?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Tekla Structures — BIM-система для детальной 
+                    проработки металлоконструкций. Из 3D-модели 
+                    автоматически выгружаются деталировочные чертежи, 
+                    монтажные схемы, ведомости и управляющие файлы 
+                    для ЧПУ (NC/DXF). Это исключает ошибки ручного 
+                    переноса и ускоряет выдачу.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Что входит в комплект документации КМД?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Деталировочные чертежи отправочных марок, 
+                    монтажные схемы, ведомость отправочных марок, 
+                    спецификация метизов, ведомость покраски, 
+                    управляющие программы для ЧПУ (NC/DXF-файлы). 
+                    При необходимости дополнительные ведомости.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Работаете удалённо?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Да, работаем с заказчиками по всей России. 
+                    Связь через Telegram, передача файлов — 
+                    облачные хранилища. Отвечаем в рабочее время 
+                    в течение часа.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Как происходит оплата?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Работаем по договору. Стандартная схема: 
+                    предоплата 30–50%, остаток — после сдачи 
+                    комплекта. Для постоянных заказчиков — 
+                    гибкие условия.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
      FOOTER
      ═══════════════════════════════════════ -->
 <footer>
     <div class="container">
         <p>L.A. Structures · Алексей Рыбин · 2026</p>
-        <div style="
-            margin-top: 32px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.03);
-            font-size: 9px;
-            color: rgba(255,255,255,0.12);
-            line-height: 2;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-            letter-spacing: 0.3px;
-        ">
-            Разработка КМД металлоконструкций. 
-            Деталировочные чертежи КМД на заказ. 
-            Проектирование металлоконструкций в Tekla Structures. 
-            КМД чертежи для производства и монтажа. 
-            Разработка конструкций металлических деталировочных. 
-            Удалённая разработка КМД по всей России. 
-            Инженер-конструктор КМД. 
-            3D модель металлоконструкций Tekla. 
-            Управляющие программы ЧПУ для металлоконструкций. 
-            NC DXF файлы из Tekla Structures. 
-            Ведомость отправочных марок. 
-            Спецификация метизов. 
-            Монтажные схемы металлоконструкций. 
-            Рабочая документация стадии КМД. 
-            Заказать КМД чертежи недорого. 
-            Проектирование стальных конструкций. 
-            КМД для промышленных зданий. 
-            Деталировка металлоконструкций фриланс. 
-            Стоимость разработки КМД за тонну.
-        </div>
     </div>
 </footer>
 
@@ -2878,6 +3102,23 @@ function handleForm(e) {
     document.getElementById('formSuccess').classList.add('show');
     return false;
 }
+
+// ─── FAQ Accordion ──────────────────────────
+function toggleFaq(btn) {
+    var item = btn.parentElement;
+    var isOpen = item.classList.contains('open');
+    
+    // Закрыть все
+    document.querySelectorAll('.faq-item').forEach(function(el) {
+        el.classList.remove('open');
+    });
+    
+    // Открыть кликнутый (если был закрыт)
+    if (!isOpen) {
+        item.classList.add('open');
+    }
+}
+
 </script>
 
 
