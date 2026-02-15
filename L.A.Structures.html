@@ -2262,33 +2262,21 @@
 
 <script>
 
-
-
-
-
 (function() {
     var banner = document.getElementById('cookieBanner');
     var btn    = document.getElementById('cookieAcceptBtn');
 
-    // Скрыть если уже приняли
+    if (!banner || !btn) return;
+
     if (localStorage.getItem('cookieOk')) {
         banner.style.display = 'none';
     }
 
-    // Кнопка «Принять» — ТОЛЬКО закрывает баннер
     btn.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
         banner.style.display = 'none';
         localStorage.setItem('cookieOk', '1');
-    });
-
-    // Ссылка на политику — закрывает баннер + скроллит к разделу
-    document.getElementById('privacyLink').addEventListener('click', function(e) {
-        e.stopPropagation();       // не даём всплыть до баннера
-        banner.style.display = 'none';
-        localStorage.setItem('cookieOk', '1');
-        // скролл сделает сам браузер по href="#privacy"
     });
 })();
 </script>
@@ -2395,9 +2383,12 @@ document.addEventListener('keydown', function(e) {
 });
 
 // Закрыть по клику на фон
-document.getElementById('privacyModal').addEventListener('click', function(e) {
-    if (e.target === this) closePrivacy();
-});
+var privacyModalEl = document.getElementById('privacyModal');
+if (privacyModalEl) {
+    privacyModalEl.addEventListener('click', function(e) {
+        if (e.target === this) closePrivacy();
+    });
+}
 
 
 // ─── Валидация контакта ─────────────────────
